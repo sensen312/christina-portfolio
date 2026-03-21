@@ -154,8 +154,8 @@ const App = () => {
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center hero-gradient text-white overflow-hidden pt-20">
         <div className="z-10 text-center px-6 max-w-5xl mx-auto">
           
-          {/* Integrated Happiness Quote */}
-          <div className="mb-12 animate-fade-in-down">
+          {/* Integrated Happiness Quote with responsive mobile top margin */}
+          <div className="-mt-24 md:mt-0 mb-12 animate-fade-in-down">
             <h2 className="serif italic text-3xl md:text-5xl text-[#C5A059] mb-4 font-light leading-tight">
               "Happiness is the continuous pursuit of a worthy goal."
             </h2>
