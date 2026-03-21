@@ -17,9 +17,11 @@ import {
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Handle scroll effect for navbar
+  // Handle scroll effect for navbar & trigger mount animations
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -71,15 +73,15 @@ const App = () => {
       {/* 1. Sovereign Gold Top Trim */}
       <div className="fixed top-0 left-0 w-full h-[4px] bg-gradient-to-r from-[#9E7B3A] via-[#C5A059] to-[#9E7B3A] z-[100] shadow-[0_0_15px_rgba(197,160,89,0.6)]"></div>
 
-      {/* Dynamic Style Injection */}
+      {/* Dynamic Style Injection - Enhanced for Premium Animations */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
         
         .serif { font-family: 'Cormorant Garamond', serif; }
         
         .card-shadow {
           box-shadow: 0 10px 40px -10px rgba(0, 43, 91, 0.08);
-          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         .card-shadow:hover {
           box-shadow: 0 20px 50px -15px rgba(0, 43, 91, 0.15);
@@ -103,6 +105,39 @@ const App = () => {
           -webkit-backdrop-filter: blur(16px);
         }
 
+        /* Classy Seamless Animations */
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeScale {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fade-in-up {
+          opacity: 0;
+          animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-fade-in-down {
+          opacity: 0;
+          animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-fade-scale {
+          opacity: 0;
+          animation: fadeScale 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Animation Delays for Staggered Elegance */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-700 { animation-delay: 700ms; }
+
         /* Ambient Atlantis Floating Animation */
         @keyframes float {
           0% { transform: translateY(0px); }
@@ -113,11 +148,11 @@ const App = () => {
           animation: float 6s ease-in-out infinite;
         }
         
-        /* Staggered float for variety */
         .animate-float-delayed {
           animation: float 7s ease-in-out infinite 2s;
         }
 
+        /* Parallax Waves */
         .parallax > use { animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite; }
         .parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
         .parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
@@ -133,25 +168,25 @@ const App = () => {
       `}</style>
 
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 mt-[4px] ${scrolled ? 'glass-panel py-4 shadow-[0_4px_30px_rgba(0,0,0,0.2)] border-b border-[#C5A059]/20' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-700 mt-[4px] ${scrolled ? 'glass-panel py-4 shadow-[0_4px_30px_rgba(0,0,0,0.2)] border-b border-[#C5A059]/20' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <a href="#home" className="serif text-3xl font-bold text-[#C5A059] tracking-tight hover:scale-105 active:scale-95 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(197,160,89,0.3)]">CR</a>
+          <a href="#home" className="serif text-3xl font-bold text-[#C5A059] tracking-tight hover:scale-105 active:scale-95 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(197,160,89,0.3)]">CR</a>
           
           <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-[#C5A059] transition-colors font-semibold relative group"
+                className="text-[10px] uppercase tracking-[0.2em] text-white/80 hover:text-[#C5A059] transition-colors duration-300 font-semibold relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#C5A059] transition-all duration-300 group-hover:w-full shadow-[0_0_5px_#C5A059]"></span>
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-[#C5A059] transition-all duration-500 ease-out group-hover:w-full shadow-[0_0_5px_#C5A059]"></span>
               </a>
             ))}
           </div>
 
           <button 
-            className="md:hidden text-white active:scale-90 transition-transform duration-200" 
+            className="md:hidden text-white active:scale-90 transition-transform duration-300" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
@@ -160,14 +195,15 @@ const App = () => {
         </div>
 
         {/* Mobile Menu with Glassmorphism and Smooth Entry */}
-        <div className={`md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className={`md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-700 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
           <div className="glass-panel p-6 flex flex-col space-y-2 border-t border-[#C5A059]/20 shadow-2xl">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <a 
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsMenuOpen(false)}
-                className="text-xl serif text-white/90 hover:text-[#C5A059] active:text-[#C5A059] py-3 border-b border-white/5 active:scale-[0.98] transition-all duration-200 origin-left"
+                className="text-xl serif text-white/90 hover:text-[#C5A059] active:text-[#C5A059] py-3 border-b border-white/5 active:scale-[0.98] transition-all duration-300 origin-left"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 {link.name}
               </a>
@@ -177,40 +213,44 @@ const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-[100svh] flex flex-col items-center justify-center hero-gradient text-white overflow-hidden pt-10 md:pt-20">
-        <div className="z-10 text-center px-6 max-w-5xl mx-auto w-full">
+      <section id="home" className="relative min-h-[100svh] flex flex-col items-center justify-center hero-gradient text-white overflow-hidden pt-28 md:pt-20 pb-20">
+        <div className="z-10 text-center px-6 max-w-5xl mx-auto w-full flex flex-col items-center justify-center">
           
-          {/* Drastically reduced mobile top margin & Doubled bottom margin for white space */}
-          <div className="-mt-40 md:mt-0 mb-20 md:mb-28 animate-fade-in-down transition-all duration-500">
-            <h2 className="serif italic text-3xl md:text-5xl text-[#C5A059] mb-4 font-light leading-tight drop-shadow-md">
+          {/* Quote Container: Removed aggressive negative margins, allowing flexbox to center naturally. Added extra top padding to section to clear mobile notch/nav. */}
+          <div className={`mb-12 md:mb-20 max-w-3xl ${mounted ? 'animate-fade-in-down' : 'opacity-0'}`}>
+            <h2 className="serif italic text-2xl md:text-4xl lg:text-5xl text-[#C5A059] mb-4 font-light leading-relaxed drop-shadow-lg">
               "Happiness is the continuous pursuit of a worthy goal."
             </h2>
-            <p className="text-white/60 text-[10px] md:text-sm tracking-[0.3em] uppercase font-semibold">
-              — UF What is the Good Life (IDS1161)
+            <p className="text-white/60 text-[9px] md:text-xs tracking-[0.3em] uppercase font-semibold mt-6">
+              — UF What is the Good Life <span className="opacity-70 font-light">(IDS1161)</span>
             </p>
           </div>
 
-          <h1 className="serif text-5xl md:text-7xl lg:text-8xl font-bold mb-8 md:mb-10 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
-            Christina Rozvodovskiy
-          </h1>
-          
-          {/* Integrated Exact Degrees with increased bottom margin to push buttons down */}
-          <div className="flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-3 text-[#C5A059] text-[9px] md:text-xs uppercase tracking-[0.2em] font-bold mb-16 md:mb-20 opacity-90">
-            <span>B.S. Psychology (Neuroscience)</span>
-            <span className="hidden md:inline opacity-50">|</span>
-            <span>B.S. Biology (Pre-Professional)</span>
-            <span className="hidden md:inline opacity-50">|</span>
-            <span>Minor in Religion</span>
-            <span className="hidden md:inline opacity-50">|</span>
-            <span>FL Licensed EMT & WEMT</span>
+          {/* Name & Title */}
+          <div className={`mb-12 md:mb-16 ${mounted ? 'animate-fade-scale delay-300' : 'opacity-0'}`}>
+            <h1 className="serif text-5xl md:text-7xl lg:text-8xl font-bold mb-8 md:mb-10 tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+              Christina Rozvodovskiy
+            </h1>
+            
+            {/* Degrees - Elegant separator layout */}
+            <div className="flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-4 text-[#C5A059] text-[9px] md:text-[11px] uppercase tracking-[0.25em] font-bold opacity-90 max-w-3xl mx-auto leading-relaxed">
+              <span>B.S. Psychology <span className="font-light">(Neuroscience)</span></span>
+              <span className="hidden md:inline text-white/30">|</span>
+              <span>B.S. Biology <span className="font-light">(Pre-Professional)</span></span>
+              <span className="hidden lg:inline text-white/30">|</span>
+              <div className="w-full lg:w-auto h-0 lg:hidden"></div> {/* Mobile line break */}
+              <span>Minor in Religion</span>
+              <span className="hidden md:inline text-white/30">|</span>
+              <span>FL Licensed EMT & WEMT</span>
+            </div>
           </div>
 
           {/* Dual Call-to-Action Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 w-full max-w-lg mx-auto">
+          <div className={`flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-6 w-full max-w-lg mx-auto ${mounted ? 'animate-fade-in-up delay-500' : 'opacity-0'}`}>
             {/* Primary Action */}
             <a 
               href="#philosophy" 
-              className="w-full sm:w-auto px-8 py-4 bg-[#C5A059] text-[#002B5B] hover:bg-white hover:text-[#002B5B] active:scale-95 transition-all duration-300 uppercase tracking-widest text-xs font-bold shadow-[0_0_25px_rgba(197,160,89,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6)] rounded-sm flex items-center justify-center"
+              className="w-full sm:w-auto px-8 py-4 bg-[#C5A059] text-[#002B5B] hover:bg-white hover:text-[#002B5B] active:scale-[0.98] transition-all duration-500 uppercase tracking-widest text-xs font-bold shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] rounded-sm flex items-center justify-center"
             >
               Discover My Journey
             </a>
@@ -221,9 +261,9 @@ const App = () => {
               download="Christina_Rozvodovskiy_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto group px-8 py-4 glass-panel text-[#C5A059] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-[#002B5B] hover:border-[#C5A059] active:scale-95 transition-all duration-300 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+              className="w-full sm:w-auto group px-8 py-4 glass-panel text-[#C5A059] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-[#002B5B] hover:border-[#C5A059] active:scale-[0.98] transition-all duration-500 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
             >
-              <Download size={16} className="group-hover:-translate-y-1 transition-transform" />
+              <Download size={16} className="group-hover:-translate-y-1 transition-transform duration-300" />
               <span>Download Resume</span>
             </a>
           </div>
@@ -246,49 +286,48 @@ const App = () => {
       </section>
 
       {/* Philosophy & About Section */}
-      <section id="philosophy" className="py-20 md:py-24 bg-[#F8F9FA] relative">
+      <section id="philosophy" className="py-24 md:py-32 bg-[#F8F9FA] relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 md:gap-20 items-center">
             
-            {/* Added .animate-float to portrait for dynamic fluid feel */}
             <div className="relative group mx-auto w-full max-w-sm md:max-w-md lg:max-w-full animate-float">
-              <div className="aspect-[4/5] bg-white flex items-center justify-center text-[#002B5B] serif text-2xl border border-[#002B5B]/10 shadow-xl overflow-hidden relative z-10">
+              <div className="aspect-[4/5] bg-white flex items-center justify-center text-[#002B5B] serif text-2xl border border-[#002B5B]/10 shadow-2xl overflow-hidden relative z-10 transition-transform duration-700 group-hover:scale-[1.02]">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#002B5B]/10 to-transparent"></div>
-                <span className="relative z-10 tracking-[0.2em] font-medium opacity-40">PORTRAIT</span>
+                <span className="relative z-10 tracking-[0.3em] font-medium opacity-30 text-sm">PORTRAIT</span>
               </div>
-              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border-2 border-[#C5A059] z-0 transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"></div>
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border-2 border-[#C5A059]/60 z-0 transition-all duration-700 group-hover:translate-x-4 group-hover:translate-y-4 group-hover:border-[#C5A059]"></div>
             </div>
 
             <div className="pl-0 lg:pl-8 mt-8 md:mt-0">
-              <h4 className="text-[#9E7B3A] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3">A Bit About Me</h4>
-              <h2 className="serif text-4xl md:text-5xl font-bold mb-8 md:mb-10 text-[#002B5B]">
+              <h4 className="text-[#9E7B3A] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4">A Bit About Me</h4>
+              <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-10 md:mb-12 text-[#002B5B] leading-tight">
                 Personal Philosophy & Aspirations
               </h2>
               
-              <div className="space-y-8 md:space-y-10">
-                <div className="border-l-2 border-[#C5A059] pl-6 transition-all duration-300 hover:pl-8">
-                  <h3 className="serif text-2xl font-bold text-[#002B5B] mb-3">Personal Philosophy</h3>
-                  <p className="text-[#002B5B]/80 leading-relaxed font-light text-base md:text-lg">
+              <div className="space-y-10 md:space-y-12">
+                <div className="border-l-2 border-[#C5A059] pl-6 md:pl-8 transition-all duration-500 hover:pl-10">
+                  <h3 className="serif text-2xl md:text-3xl font-bold text-[#002B5B] mb-4">Personal Philosophy</h3>
+                  <p className="text-[#002B5B]/80 leading-loose font-light text-base md:text-lg">
                     I believe that people create their own happiness through intentional action. To do this, we must be emotionally aware and understanding of the difference between momentary pleasure and long-lasting joy, which is cultivated over time.
                   </p>
                 </div>
                 
-                <div className="border-l-2 border-[#002B5B]/20 pl-6 hover:border-[#C5A059] transition-all duration-500 hover:pl-8">
-                  <h3 className="serif text-2xl font-bold text-[#002B5B] mb-3">Career Aspirations</h3>
-                  <p className="text-[#002B5B]/80 leading-relaxed font-light text-base md:text-lg">
+                <div className="border-l-2 border-[#002B5B]/10 pl-6 md:pl-8 hover:border-[#C5A059] transition-all duration-500 hover:pl-10 group">
+                  <h3 className="serif text-2xl md:text-3xl font-bold text-[#002B5B] mb-4 group-hover:text-[#9E7B3A] transition-colors duration-300">Career Aspirations</h3>
+                  <p className="text-[#002B5B]/80 leading-loose font-light text-base md:text-lg">
                     I have fulfilled the requirements for pre-Med, pre-PA, and pre-PhD. I intend to spend the next year shadowing various medical professionals and working as an EMT to determine my exact next career steps.
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 md:gap-6 mt-10 md:mt-12 pt-8 border-t border-[#002B5B]/10">
-                <div className="flex items-center space-x-3 md:space-x-4 text-[#002B5B] group">
-                  <div className="w-10 h-10 rounded-full bg-[#002B5B]/5 group-hover:bg-[#C5A059]/10 transition-colors flex items-center justify-center text-[#9E7B3A]"><GraduationCap size={20} /></div>
-                  <span className="text-[10px] md:text-xs uppercase tracking-wider font-bold">Multiple Degrees</span>
+              <div className="grid grid-cols-2 gap-6 mt-12 md:mt-16 pt-10 border-t border-[#002B5B]/10">
+                <div className="flex items-center space-x-4 text-[#002B5B] group cursor-default">
+                  <div className="w-12 h-12 rounded-full bg-[#002B5B]/5 group-hover:bg-[#C5A059]/10 transition-colors duration-500 flex items-center justify-center text-[#9E7B3A]"><GraduationCap size={22} /></div>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold">Multiple Degrees</span>
                 </div>
-                <div className="flex items-center space-x-3 md:space-x-4 text-[#002B5B] group">
-                  <div className="w-10 h-10 rounded-full bg-[#002B5B]/5 group-hover:bg-[#C5A059]/10 transition-colors flex items-center justify-center text-[#9E7B3A]"><Heart size={20} /></div>
-                  <span className="text-[10px] md:text-xs uppercase tracking-wider font-bold">EMT Certified</span>
+                <div className="flex items-center space-x-4 text-[#002B5B] group cursor-default">
+                  <div className="w-12 h-12 rounded-full bg-[#002B5B]/5 group-hover:bg-[#C5A059]/10 transition-colors duration-500 flex items-center justify-center text-[#9E7B3A]"><Heart size={22} /></div>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold">EMT Certified</span>
                 </div>
               </div>
             </div>
@@ -297,73 +336,75 @@ const App = () => {
       </section>
 
       {/* Global & Clinical Experiences */}
-      <section id="experience" className="py-20 md:py-24 bg-white relative">
+      <section id="experience" className="py-24 md:py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <h4 className="text-[#9E7B3A] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3">Global & Clinical</h4>
-            <h2 className="serif text-4xl md:text-5xl font-bold mb-4 text-[#002B5B]">Experiences in the Field</h2>
-            <p className="text-[#002B5B]/70 font-medium max-w-2xl mx-auto text-sm md:text-base">Bridging cultural divides, advocating for justice, and providing critical pre-hospital care.</p>
+          <div className="text-center mb-16 md:mb-20">
+            <h4 className="text-[#9E7B3A] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4">Global & Clinical</h4>
+            <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#002B5B]">Experiences in the Field</h2>
+            <p className="text-[#002B5B]/70 font-light max-w-2xl mx-auto text-base md:text-lg leading-relaxed">Bridging cultural divides, advocating for justice, and providing critical pre-hospital care.</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-left">
-            {/* Added active:scale-[0.98] for satisfying mobile tap interaction */}
-            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.98] transition-all duration-300">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-[0_4px_10px_rgba(197,160,89,0.15)] group-hover:shadow-[0_4px_15px_rgba(197,160,89,0.3)] transition-shadow">
-                <Stethoscope size={28} strokeWidth={1.5} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 text-left">
+            {/* Card 1 */}
+            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.99] transition-all duration-500">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out"></div>
+              <div className="mb-8 text-[#C5A059] bg-white w-16 h-16 flex items-center justify-center rounded-full shadow-[0_8px_20px_rgba(197,160,89,0.15)] group-hover:shadow-[0_8px_25px_rgba(197,160,89,0.3)] transition-shadow duration-500">
+                <Stethoscope size={30} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-2">Peace Corps Prep</h4>
-              <h3 className="serif text-2xl font-bold mb-4 text-[#002B5B]">Focus: Health</h3>
-              <ul className="text-[#002B5B]/80 text-sm mb-4 list-disc pl-4 space-y-1">
+              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-3">Peace Corps Prep</h4>
+              <h3 className="serif text-2xl md:text-3xl font-bold mb-5 text-[#002B5B]">Focus: Health</h3>
+              <ul className="text-[#002B5B]/80 text-sm md:text-base mb-6 list-disc pl-5 space-y-2 font-light">
                 <li>EMS1119 EMT Basic</li>
                 <li>EMS1411 Clinical/Hospital</li>
                 <li>EMS1421 EMT Basic Clinical</li>
               </ul>
-              <p className="text-[#002B5B] font-semibold text-xs md:text-sm mb-4">Hands-on Experience: 96 hours of EMT In-field Training</p>
-              <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
+              <p className="text-[#002B5B] font-medium text-xs md:text-sm mb-6 bg-[#C5A059]/10 inline-block px-3 py-1 rounded-sm">96 hours of EMT In-field Training</p>
+              <p className="text-[#002B5B]/70 leading-loose font-light text-sm md:text-base border-t border-[#002B5B]/10 pt-6">
                 During my EMT training, I encountered a young patient resistant to transfer due to religious concerns. Using knowledge from my religion minor, I approached the family with empathy, reframing the situation to secure necessary treatment.
               </p>
               
-              <div className="mt-6 pt-4 border-t border-[#002B5B]/10">
+              <div className="mt-8 pt-6 border-t border-[#002B5B]/10">
                 <a 
                   href="/SFC EMT Completion Certificate.pdf" 
                   download="SFC EMT Completion Certificate.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-[#C5A059] hover:text-[#002B5B] transition-colors text-[10px] md:text-xs font-bold uppercase tracking-widest active:scale-95 origin-left"
+                  className="inline-flex items-center space-x-3 text-[#C5A059] hover:text-[#002B5B] transition-colors duration-300 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] active:scale-95 origin-left"
                 >
-                  <Download size={16} />
+                  <Download size={18} />
                   <span>View EMT Certificate</span>
                 </a>
               </div>
             </div>
 
-            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.98] transition-all duration-300">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-[0_4px_10px_rgba(197,160,89,0.15)] group-hover:shadow-[0_4px_15px_rgba(197,160,89,0.3)] transition-shadow">
-                <Languages size={28} strokeWidth={1.5} />
+            {/* Card 2 */}
+            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.99] transition-all duration-500">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out"></div>
+              <div className="mb-8 text-[#C5A059] bg-white w-16 h-16 flex items-center justify-center rounded-full shadow-[0_8px_20px_rgba(197,160,89,0.15)] group-hover:shadow-[0_8px_25px_rgba(197,160,89,0.3)] transition-shadow duration-500">
+                <Languages size={30} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-2">Communication</h4>
-              <h3 className="serif text-2xl font-bold mb-4 text-[#002B5B]">Language & Worldview</h3>
-              <p className="text-[#002B5B]/80 leading-relaxed font-light text-sm mb-4">
+              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-3">Communication</h4>
+              <h3 className="serif text-2xl md:text-3xl font-bold mb-5 text-[#002B5B]">Language & Worldview</h3>
+              <p className="text-[#002B5B]/80 leading-loose font-light text-sm md:text-base mb-6">
                 Growing up in a trilingual household taught me the importance of setting aside reservations to make an effort to communicate. 
               </p>
-              <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
+              <p className="text-[#002B5B]/70 leading-loose font-light text-sm md:text-base border-t border-[#002B5B]/10 pt-6">
                 From assisting panicked parents with a translation app during EMT clinicals—a skill honed working retail in North Miami—to engaging with locals in Japan, I believe transcending language barriers is essential to humanizing care.
               </p>
             </div>
 
-            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.98] transition-all duration-300">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-[0_4px_10px_rgba(197,160,89,0.15)] group-hover:shadow-[0_4px_15px_rgba(197,160,89,0.3)] transition-shadow">
-                <ShieldAlert size={28} strokeWidth={1.5} />
+            {/* Card 3 */}
+            <div className="bg-[#F8F9FA] p-8 md:p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2 active:scale-[0.99] transition-all duration-500">
+              <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out"></div>
+              <div className="mb-8 text-[#C5A059] bg-white w-16 h-16 flex items-center justify-center rounded-full shadow-[0_8px_20px_rgba(197,160,89,0.15)] group-hover:shadow-[0_8px_25px_rgba(197,160,89,0.3)] transition-shadow duration-500">
+                <ShieldAlert size={30} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-2">Advocacy</h4>
-              <h3 className="serif text-2xl font-bold mb-4 text-[#002B5B]">Global Issue Involvement</h3>
-              <p className="text-[#002B5B]/80 leading-relaxed font-light text-sm mb-4">
-                <strong className="text-[#002B5B]">IJM 2024 Advocacy Summit:</strong> As President of the UF student chapter of the International Justice Mission, I lobbied for the EARN IT Act to combat online exploitation.
+              <h4 className="text-[#9E7B3A] text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-3">Advocacy</h4>
+              <h3 className="serif text-2xl md:text-3xl font-bold mb-5 text-[#002B5B]">Global Issue Involvement</h3>
+              <p className="text-[#002B5B]/80 leading-loose font-light text-sm md:text-base mb-6">
+                <strong className="text-[#002B5B] font-semibold">IJM 2024 Advocacy Summit:</strong> As President of the UF student chapter of the International Justice Mission, I lobbied for the EARN IT Act to combat online exploitation.
               </p>
-              <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
+              <p className="text-[#002B5B]/70 leading-loose font-light text-sm md:text-base border-t border-[#002B5B]/10 pt-6">
                 Alongside legal personnel and clergy, I voiced our pleas to government officials. My desire to stand up against injustice enabled our team to represent broader demographics at the legislative level.
               </p>
             </div>
@@ -372,33 +413,33 @@ const App = () => {
       </section>
 
       {/* Research Archive */}
-      <section id="research" className="py-20 md:py-24 bg-[#001229] text-white relative">
+      <section id="research" className="py-24 md:py-32 bg-[#001229] text-white relative">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12 md:mb-16">
-            <h4 className="text-[#C5A059] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3">The Archive</h4>
-            <h2 className="serif text-4xl md:text-5xl font-bold mb-4 text-white">International Coursework</h2>
-            <p className="text-white/70 font-medium max-w-3xl mx-auto text-sm md:text-base">
+          <div className="text-center mb-16 md:mb-20">
+            <h4 className="text-[#C5A059] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-4">The Archive</h4>
+            <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">International Coursework</h2>
+            <p className="text-white/70 font-light max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
               Religion courses taught me to address patient care holistically. Understanding that multifaceted factors motivate medical decisions is a significant tool in promoting effective treatment. Treating someone with empathy is always the most effective option.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
             {archiveData.map((category, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-sm hover:border-[#C5A059]/50 transition-colors duration-300">
-                <h3 className="serif text-xl md:text-2xl font-bold text-[#C5A059] mb-4 md:mb-6 border-b border-white/10 pb-4">{category.course}</h3>
-                <div className="space-y-3 md:space-y-4">
+              <div key={idx} className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-sm hover:border-[#C5A059]/50 transition-colors duration-500 group">
+                <h3 className="serif text-2xl md:text-3xl font-bold text-[#C5A059] mb-6 md:mb-8 border-b border-white/10 pb-5 group-hover:border-[#C5A059]/30 transition-colors duration-500">{category.course}</h3>
+                <div className="space-y-4 md:space-y-5">
                   {category.papers.map((paper, pIdx) => (
-                    <div key={pIdx} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 group bg-black/30 hover:bg-black/40 p-4 rounded-sm transition-colors">
-                      <p className="text-white/90 font-light text-sm leading-relaxed flex-1">{paper.title}</p>
+                    <div key={pIdx} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 bg-black/30 hover:bg-black/50 p-5 rounded-sm transition-colors duration-300">
+                      <p className="text-white/90 font-light text-sm md:text-base leading-relaxed flex-1">{paper.title}</p>
                       
                       <a 
                         href={`/${paper.file}`}
                         download={paper.file}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 text-[#C5A059] hover:text-white transition-colors text-[10px] md:text-xs font-bold uppercase tracking-widest whitespace-nowrap active:scale-95"
+                        className="inline-flex items-center space-x-2 text-[#C5A059] hover:text-white transition-colors duration-300 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap active:scale-95 p-2"
                       >
-                        <Download size={14} className="group-hover:-translate-y-1 transition-transform" />
+                        <Download size={16} className="group-hover:-translate-y-1 transition-transform duration-300" />
                         <span>PDF</span>
                       </a>
                     </div>
@@ -411,12 +452,11 @@ const App = () => {
       </section>
 
       {/* Final Reflection */}
-      <section id="reflection" className="py-20 md:py-24 bg-white relative">
+      <section id="reflection" className="py-24 md:py-32 bg-white relative">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          {/* Subtle floating animation applied to the icon */}
-          <BookOpen size={48} className="text-[#C5A059] mx-auto mb-8 opacity-70 animate-float-delayed drop-shadow-[0_4px_8px_rgba(197,160,89,0.3)]" />
-          <h2 className="serif text-4xl md:text-5xl font-bold mb-8 md:mb-10 text-[#002B5B]">Final Reflection</h2>
-          <div className="space-y-5 md:space-y-6 text-[#002B5B]/80 leading-relaxed font-light text-base md:text-xl text-left">
+          <BookOpen size={56} className="text-[#C5A059] mx-auto mb-10 opacity-80 animate-float-delayed drop-shadow-[0_8px_16px_rgba(197,160,89,0.2)]" strokeWidth={1.5} />
+          <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-10 md:mb-14 text-[#002B5B]">Final Reflection</h2>
+          <div className="space-y-8 md:space-y-10 text-[#002B5B]/80 leading-loose font-light text-base md:text-xl text-left">
             <p>
               During my time at UF, my global mindset shifted, especially toward healthcare. Western medicine has been considered superior for as long as history can remember, while Eastern holistic practices are often frowned upon and dismissed. 
             </p>
@@ -431,38 +471,38 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-24 bg-[#001d3d] text-white relative overflow-hidden border-t border-[#C5A059]/20">
-        <div className="absolute top-0 right-0 w-72 md:w-96 h-72 md:h-96 bg-[#C5A059]/10 rounded-full blur-[80px] md:blur-[100px] pointer-events-none animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-72 md:w-96 h-72 md:h-96 bg-[#004d80]/30 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"></div>
+      <section id="contact" className="py-24 md:py-32 bg-[#001d3d] text-white relative overflow-hidden border-t border-[#C5A059]/20">
+        <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#C5A059]/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute bottom-0 left-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#004d80]/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none"></div>
         
         <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="serif text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-white">Connect & Collaborate</h2>
-            <p className="text-white/70 text-base md:text-lg font-light max-w-2xl mx-auto">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">Connect & Collaborate</h2>
+            <p className="text-white/70 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
               Seeking opportunities in clinical research, medical advocacy, and healthcare initiatives. Let's start a conversation.
             </p>
           </div>
           
-          <div className="glass-panel border border-white/10 p-6 md:p-12 rounded-sm shadow-2xl">
-            <form className="text-left space-y-6 md:space-y-8" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="glass-panel border border-white/10 p-8 md:p-16 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+            <form className="text-left space-y-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid md:grid-cols-2 gap-10">
                 <div className="relative group">
-                  <label className="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Full Name</label>
-                  <input type="text" className="w-full bg-transparent border-b-2 border-white/20 py-2 md:py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light text-sm md:text-base" placeholder="Jane Doe" />
+                  <label className="block text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#C5A059] font-bold mb-3 transition-colors">Full Name</label>
+                  <input type="text" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/20 font-light text-base md:text-lg" placeholder="Jane Doe" />
                 </div>
                 <div className="relative group">
-                  <label className="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Email Address</label>
-                  <input type="email" className="w-full bg-transparent border-b-2 border-white/20 py-2 md:py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light text-sm md:text-base" placeholder="jane@example.com" />
+                  <label className="block text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#C5A059] font-bold mb-3 transition-colors">Email Address</label>
+                  <input type="email" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/20 font-light text-base md:text-lg" placeholder="jane@example.com" />
                 </div>
               </div>
               <div className="relative group">
-                <label className="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Message</label>
-                <textarea rows="4" className="w-full bg-transparent border-b-2 border-white/20 py-2 md:py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 resize-none font-light text-sm md:text-base" placeholder="Share your thoughts..."></textarea>
+                <label className="block text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#C5A059] font-bold mb-3 transition-colors">Message</label>
+                <textarea rows="4" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/20 resize-none font-light text-base md:text-lg" placeholder="Share your thoughts..."></textarea>
               </div>
-              <div className="text-center pt-4">
-                <button className="inline-flex items-center justify-center w-full md:w-auto space-x-3 bg-[#C5A059] text-[#001d3d] px-10 py-4 uppercase tracking-widest font-bold text-xs md:text-sm hover:bg-white active:scale-95 transition-all duration-300 rounded-sm group shadow-[0_4px_15px_rgba(197,160,89,0.3)]">
+              <div className="text-center pt-6">
+                <button className="inline-flex items-center justify-center w-full md:w-auto space-x-4 bg-[#C5A059] text-[#001d3d] px-12 py-5 uppercase tracking-[0.2em] font-bold text-xs md:text-sm hover:bg-white active:scale-[0.98] transition-all duration-500 rounded-sm group shadow-[0_10px_30px_rgba(197,160,89,0.3)] hover:shadow-[0_15px_40px_rgba(255,255,255,0.4)]">
                   <span>Send Message</span>
-                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                 </button>
               </div>
             </form>
@@ -471,11 +511,11 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 md:py-10 bg-[#001229] text-white/40 text-center border-t border-[#C5A059]/10">
+      <footer className="py-10 md:py-12 bg-[#001229] text-white/40 text-center border-t border-[#C5A059]/10">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="serif text-[#C5A059] text-xl md:text-2xl font-bold mb-3 md:mb-4 opacity-80">CR</div>
-          <p className="text-[10px] md:text-xs uppercase tracking-widest mb-2 font-medium">Christina Rozvodovskiy</p>
-          <p className="text-[9px] md:text-[10px] tracking-widest font-light">© {new Date().getFullYear()} — Built for Medical Excellence</p>
+          <div className="serif text-[#C5A059] text-2xl md:text-3xl font-bold mb-4 opacity-80 tracking-widest">CR</div>
+          <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] mb-3 font-medium text-white/60">Christina Rozvodovskiy</p>
+          <p className="text-[9px] md:text-[10px] tracking-[0.2em] font-light">© {new Date().getFullYear()} — Built for Medical Excellence</p>
         </div>
       </footer>
     </div>
