@@ -252,7 +252,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Global & Clinical Experiences */}
+      {/* Global & Clinical Experiences (Integrated Peace Corps, IJM, Languages) */}
       <section id="experience" className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -262,6 +262,7 @@ const App = () => {
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8 text-left">
+            {/* Peace Corps Prep / EMT */}
             <div className="bg-[#F8F9FA] p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2">
               <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-sm">
@@ -276,10 +277,11 @@ const App = () => {
               </ul>
               <p className="text-[#002B5B] font-semibold text-sm mb-4">Hands-on Experience: 96 hours of EMT In-field Training</p>
               <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
-                During my EMT training, I encountered a young patient resistant to transfer due to religious concerns. Using knowledge from my religion minor, I approached the family with empathy, reframing the situation to secure necessary treatment.
+                <strong>Integration of Health & Education:</strong> During my EMT training, I encountered a young patient resistant to transfer due to religious concerns of the guardian. Using knowledge from my religion minor, I approached the family with empathy, reframing the situation to alleviate tension and secure necessary treatment.
               </p>
             </div>
 
+            {/* Language Learning */}
             <div className="bg-[#F8F9FA] p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2">
               <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-sm">
@@ -291,10 +293,11 @@ const App = () => {
                 Growing up in a trilingual household taught me the importance of setting aside reservations to make an effort to communicate. 
               </p>
               <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
-                From assisting panicked parents with a translation app during EMT clinicals—a skill honed working retail in North Miami—to engaging with locals in Japan, I believe transcending language barriers is essential to humanizing care.
+                From assisting panicked parents with a translation app during EMT clinicals—a skill honed working retail in North Miami—to engaging with locals during a Spring 2024 trip to Japan, I believe transcending language barriers is essential to providing a positive, humanizing patient experience.
               </p>
             </div>
 
+            {/* Global Issues */}
             <div className="bg-[#F8F9FA] p-10 border border-[#002B5B]/5 card-shadow rounded-sm relative overflow-hidden group hover:-translate-y-2">
               <div className="absolute top-0 left-0 w-full h-1 bg-[#C5A059] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="mb-6 text-[#C5A059] bg-white w-14 h-14 flex items-center justify-center rounded-full shadow-sm">
@@ -303,17 +306,17 @@ const App = () => {
               <h4 className="text-[#9E7B3A] text-[10px] font-bold uppercase tracking-widest mb-2">Advocacy</h4>
               <h3 className="serif text-2xl font-bold mb-4 text-[#002B5B]">Global Issue Involvement</h3>
               <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm mb-4">
-                <strong>IJM 2024 Advocacy Summit:</strong> As President of the UF student chapter of the International Justice Mission, I lobbied for the EARN IT Act to combat online exploitation.
+                <strong>IJM 2024 Advocacy Summit:</strong> As a founding member and President of the UF student chapter of the International Justice Mission (IJM), I lobbied for the EARN IT Act to combat the Online Sexual Exploitation of Children (OSEC).
               </p>
               <p className="text-[#002B5B]/70 leading-relaxed font-light text-sm border-t border-[#002B5B]/10 pt-4">
-                Alongside legal personnel and clergy, I voiced our pleas to government officials. My desire to stand up against injustice enabled our team to represent broader demographics at the legislative level.
+                Alongside trained legal personnel and clergy, I voiced our pleas to government officials. My deep-seated desire to stand up against injustice enabled our team to represent broader demographics, ensuring vulnerable populations were advocated for at the legislative level.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Research Archive */}
+      {/* Research Archive (Complete Course Integration) */}
       <section id="research" className="py-24 bg-[#001229] text-white relative">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -332,13 +335,14 @@ const App = () => {
                   {category.papers.map((paper, pIdx) => (
                     <div key={pIdx} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 group bg-black/20 p-4 rounded-sm">
                       <p className="text-white/90 font-light text-sm leading-relaxed flex-1">{paper.title}</p>
-                      <button 
-                        onClick={() => alert(`Initiating download for: ${paper.file}`)}
+                      <a 
+                        href={`#download-${paper.file}`}
+                        onClick={(e) => { e.preventDefault(); alert(`Initiating download for: ${paper.file}`); }}
                         className="inline-flex items-center space-x-2 text-[#C5A059] hover:text-white transition-colors text-xs font-bold uppercase tracking-widest whitespace-nowrap"
                       >
                         <Download size={14} />
                         <span>PDF</span>
-                      </button>
+                      </a>
                     </div>
                   ))}
                 </div>
@@ -355,13 +359,13 @@ const App = () => {
           <h2 className="serif text-4xl md:text-5xl font-bold mb-10 text-[#002B5B]">Final Reflection</h2>
           <div className="space-y-6 text-[#002B5B]/80 leading-relaxed font-light text-lg md:text-xl text-left">
             <p>
-              During my time at UF, my global mindset shifted, especially toward healthcare. Western medicine has been considered superior for as long as history can remember, while Eastern holistic practices are often frowned upon and dismissed. 
+              During my time at UF, my global mindset shifted, especially toward healthcare, which is significant as I hope to work in it. Western medicine has been considered superior for as long as history can remember, while Eastern holistic practices are often frowned upon and dismissed. 
             </p>
             <p>
-              My perspective changed when I learned that Eastern medicine is highly effective at preventing sickness and creating a balanced life. This spurred a desire to integrate the most positive health effects of all dimensions to create a healthcare system in the US where we not only treat sickness but keep the community healthy in the first place.
+              My perspective changed when I learned that Eastern medicine is highly effective at preventing sickness and allowing for the creation of a balanced life. This spurred a desire to learn more about international health practices, aiming to integrate the most positive health effects of all dimensions to create a healthcare system in the US where we not only treat people once they are already sick but also provide resources that keep the community healthy in the first place. This is also why I am passionate about working as an EMT: Emergency Medicine is integral to providing health services to vulnerable populations.
             </p>
             <p>
-              Emergency Medicine is integral to providing services to vulnerable populations. In addition to physical well-being, mental health is just as important. Studies have shown friendship to increase longevity, and I explored how friendship varied in collectivistic and individualistic cultures by conducting content analysis of Russian and US sitcoms. 
+              In addition to physical well-being, mental health is just as important. Studies have shown friendship to increase longevity and meet more needs than any other type of relationship. I explored how friendship varied in more collectivistic and individualistic cultures by conducting a content analysis of Russian sitcoms and comparing the data to US sitcoms. 
             </p>
           </div>
         </div>
@@ -384,17 +388,29 @@ const App = () => {
             <form className="text-left space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative group">
-                  <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Full Name</label>
-                  <input type="text" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light" placeholder="Jane Doe" />
+                  <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2">Full Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light"
+                    placeholder="Jane Doe"
+                  />
                 </div>
                 <div className="relative group">
-                  <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Email Address</label>
-                  <input type="email" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light" placeholder="jane@example.com" />
+                  <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2">Email Address</label>
+                  <input 
+                    type="email" 
+                    className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 font-light"
+                    placeholder="jane@example.com"
+                  />
                 </div>
               </div>
               <div className="relative group">
-                <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2 transition-colors">Message</label>
-                <textarea rows="4" className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 resize-none font-light" placeholder="Share your thoughts..."></textarea>
+                <label className="block text-xs uppercase tracking-[0.15em] text-[#C5A059] font-bold mb-2">Message</label>
+                <textarea 
+                  rows="4"
+                  className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-[#C5A059] transition-colors text-white placeholder:text-white/30 resize-none font-light"
+                  placeholder="Share your thoughts or inquiries..."
+                ></textarea>
               </div>
               <div className="text-center pt-4">
                 <button className="inline-flex items-center space-x-3 bg-[#C5A059] text-[#001d3d] px-10 py-4 uppercase tracking-widest font-bold text-sm hover:bg-white transition-colors duration-300 rounded-sm group">
