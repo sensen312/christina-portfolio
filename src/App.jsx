@@ -180,8 +180,8 @@ const App = () => {
       <section id="home" className="relative min-h-[100svh] flex flex-col items-center justify-center hero-gradient text-white overflow-hidden pt-10 md:pt-20">
         <div className="z-10 text-center px-6 max-w-5xl mx-auto w-full">
           
-          {/* Drastically reduced mobile top margin: -mt-40 halves the visual space */}
-          <div className="-mt-40 md:mt-0 mb-10 md:mb-12 animate-fade-in-down transition-all duration-500">
+          {/* Drastically reduced mobile top margin & Doubled bottom margin for white space */}
+          <div className="-mt-40 md:mt-0 mb-20 md:mb-28 animate-fade-in-down transition-all duration-500">
             <h2 className="serif italic text-3xl md:text-5xl text-[#C5A059] mb-4 font-light leading-tight drop-shadow-md">
               "Happiness is the continuous pursuit of a worthy goal."
             </h2>
@@ -190,12 +190,12 @@ const App = () => {
             </p>
           </div>
 
-          <h1 className="serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+          <h1 className="serif text-5xl md:text-7xl lg:text-8xl font-bold mb-8 md:mb-10 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
             Christina Rozvodovskiy
           </h1>
           
-          {/* Integrated Exact Degrees */}
-          <div className="flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-3 text-[#C5A059] text-[9px] md:text-xs uppercase tracking-[0.2em] font-bold mb-12 opacity-90">
+          {/* Integrated Exact Degrees with increased bottom margin to push buttons down */}
+          <div className="flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 gap-y-3 text-[#C5A059] text-[9px] md:text-xs uppercase tracking-[0.2em] font-bold mb-16 md:mb-20 opacity-90">
             <span>B.S. Psychology (Neuroscience)</span>
             <span className="hidden md:inline opacity-50">|</span>
             <span>B.S. Biology (Pre-Professional)</span>
@@ -205,13 +205,26 @@ const App = () => {
             <span>FL Licensed EMT & WEMT</span>
           </div>
 
-          <div className="flex justify-center">
-            {/* Added active:scale-95 for tactile mobile tap feedback */}
+          {/* Dual Call-to-Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 w-full max-w-lg mx-auto">
+            {/* Primary Action */}
             <a 
               href="#philosophy" 
-              className="px-8 py-4 bg-[#C5A059] text-[#002B5B] hover:bg-white hover:text-[#002B5B] active:scale-95 transition-all duration-300 uppercase tracking-widest text-xs font-bold shadow-[0_0_25px_rgba(197,160,89,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6)] rounded-sm"
+              className="w-full sm:w-auto px-8 py-4 bg-[#C5A059] text-[#002B5B] hover:bg-white hover:text-[#002B5B] active:scale-95 transition-all duration-300 uppercase tracking-widest text-xs font-bold shadow-[0_0_25px_rgba(197,160,89,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6)] rounded-sm flex items-center justify-center"
             >
               Discover My Journey
+            </a>
+            
+            {/* Secondary Action: Resume Download */}
+            <a 
+              href="/Christina_Rozvodovskiy_Resume.pdf" 
+              download="Christina_Rozvodovskiy_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto group px-8 py-4 glass-panel text-[#C5A059] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-[#002B5B] hover:border-[#C5A059] active:scale-95 transition-all duration-300 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+            >
+              <Download size={16} className="group-hover:-translate-y-1 transition-transform" />
+              <span>Download Resume</span>
             </a>
           </div>
         </div>
