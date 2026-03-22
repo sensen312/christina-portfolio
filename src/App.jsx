@@ -171,8 +171,8 @@ const App = () => {
         html { scroll-behavior: smooth; }
       `}</style>
 
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-700 mt-[4px] ${scrolled ? 'glass-panel py-4 shadow-[0_4px_30px_rgba(0,0,0,0.2)] border-b border-[#C5A059]/20' : 'bg-transparent py-6'}`}>
+      {/* Navigation - Uses solid #001D3D on scroll to prevent color bleed */}
+      <nav className={`fixed w-full z-50 transition-all duration-700 mt-[4px] ${scrolled ? 'bg-[#001D3D] py-4 shadow-[0_4px_30px_rgba(0,0,0,0.4)] border-b border-[#C5A059]/20' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <a href="#home" className={`serif text-3xl font-bold text-[#C5A059] tracking-tight hover:scale-105 active:scale-95 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(197,160,89,0.3)] ${focusRingDarkBg}`}>CR</a>
           
@@ -199,9 +199,9 @@ const App = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Locked to solid #001D3D to match navbar scroll state */}
         <div className={`md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-700 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="glass-panel p-6 flex flex-col space-y-2 border-t border-[#C5A059]/20 shadow-2xl">
+          <div className="bg-[#001D3D] p-6 flex flex-col space-y-2 border-t border-[#C5A059]/20 shadow-2xl">
             {navLinks.map((link, index) => (
               <a 
                 key={link.name} 
@@ -236,7 +236,7 @@ const App = () => {
               Christina Rozvodovskiy
             </h1>
             
-            {/* Degrees - Refactored for Cognitive Layout (Badges) */}
+            {/* Degrees - Cognitive Layout (Badges) */}
             <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-[#C5A059] text-xs uppercase tracking-widest font-bold max-w-4xl mx-auto">
               <span className="bg-white/5 border border-[#C5A059]/30 px-4 py-2 rounded-sm backdrop-blur-sm shadow-sm">B.S. Psychology</span>
               <span className="bg-white/5 border border-[#C5A059]/30 px-4 py-2 rounded-sm backdrop-blur-sm shadow-sm">B.S. Biology</span>
@@ -307,8 +307,8 @@ const App = () => {
               </h2>
               
               <div className="space-y-10 md:space-y-12">
-                <div className="border-l-2 border-[#C5A059] pl-6 md:pl-8 transition-all duration-500 hover:pl-10">
-                  <h3 className="serif text-2xl md:text-3xl font-bold text-[#002B5B] mb-4">Personal Philosophy</h3>
+                <div className="border-l-2 border-[#002B5B]/10 pl-6 md:pl-8 hover:border-[#C5A059] transition-all duration-500 hover:pl-10 group">
+                  <h3 className="serif text-2xl md:text-3xl font-bold text-[#002B5B] mb-4 group-hover:text-[#9E7B3A] transition-colors duration-300">Personal Philosophy</h3>
                   <p className="text-[#002B5B]/80 leading-loose font-light text-base md:text-lg">
                     I believe that people create their own happiness through intentional action. To do this, we must be emotionally aware and understanding of the difference between momentary pleasure and long-lasting joy, which is cultivated over time.
                   </p>
@@ -436,7 +436,6 @@ const App = () => {
       <section id="research" className="py-24 md:py-32 bg-[#001229] text-white relative">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16 md:mb-20">
-            {/* Gold passes AA contrast on deep navy background */}
             <h4 className="text-[#C5A059] text-xs font-bold uppercase tracking-widest mb-4">The Archive</h4>
             <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">International Coursework</h2>
             <p className="text-white/70 font-light max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
@@ -492,7 +491,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Form Restored and Centered */}
       <section id="contact" className="py-24 md:py-32 bg-[#001d3d] text-white relative overflow-hidden border-t border-[#C5A059]/20">
         <div className="absolute top-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#C5A059]/10 rounded-full blur-[100px] md:blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} aria-hidden="true"></div>
         <div className="absolute bottom-0 left-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#004d80]/30 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" aria-hidden="true"></div>
@@ -501,7 +500,7 @@ const App = () => {
           <div className="text-center mb-16 md:mb-20">
             <h2 className="serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">Connect & Collaborate</h2>
             <p className="text-white/70 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
-              Seeking opportunities in clinical research, medical advocacy, and healthcare initiatives. Let's start a conversation.
+              Seeking opportunities in clinical research, medical advocacy, and patient care initiatives. Let's start a conversation.
             </p>
           </div>
           
@@ -521,8 +520,10 @@ const App = () => {
                 <label htmlFor="message" className="block text-xs uppercase tracking-widest text-[#C5A059] font-bold mb-3 transition-colors">Message</label>
                 <textarea id="message" rows="4" className={`w-full bg-transparent border-b-2 border-white/20 py-3 transition-colors text-white placeholder:text-white/20 resize-none font-light text-base md:text-lg rounded-sm ${focusRingDarkBg}`} placeholder="Share your thoughts..."></textarea>
               </div>
-              <div className="text-center pt-6">
-                <button type="submit" className={`inline-flex items-center justify-center w-full md:w-auto space-x-4 bg-[#C5A059] text-[#001d3d] px-12 py-5 uppercase tracking-widest font-bold text-xs md:text-sm hover:bg-white active:scale-[0.98] transition-all duration-500 rounded-sm group shadow-[0_10px_30px_rgba(197,160,89,0.3)] hover:shadow-[0_15px_40px_rgba(255,255,255,0.4)] ${focusRingDarkBg}`}>
+              
+              {/* Perfectly centered submit button container */}
+              <div className="text-center pt-6 flex justify-center">
+                <button type="submit" className={`inline-flex items-center justify-center w-full sm:w-auto space-x-4 bg-[#C5A059] text-[#001d3d] px-12 py-5 uppercase tracking-widest font-bold text-xs md:text-sm hover:bg-white active:scale-[0.98] transition-all duration-500 rounded-sm group shadow-[0_10px_30px_rgba(197,160,89,0.3)] hover:shadow-[0_15px_40px_rgba(255,255,255,0.4)] ${focusRingDarkBg}`}>
                   <span>Send Message</span>
                   <Send size={20} aria-hidden="true" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                 </button>
@@ -533,11 +534,11 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 md:py-12 bg-[#001229] text-white/40 text-center border-t border-[#C5A059]/10">
+      <footer className="py-10 md:py-12 bg-[#001229] text-white/60 text-center border-t border-[#C5A059]/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="serif text-[#C5A059] text-2xl md:text-3xl font-bold mb-4 opacity-80 tracking-widest">CR</div>
-          <p className="text-xs uppercase tracking-widest mb-3 font-medium text-white/60">Christina Rozvodovskiy</p>
-          <p className="text-[11px] tracking-widest font-light">© {new Date().getFullYear()} — Built for Medical Excellence</p>
+          <p className="text-xs uppercase tracking-widest mb-3 font-medium">Christina Rozvodovskiy</p>
+          <p className="text-[11px] tracking-widest font-light text-white/50">© {new Date().getFullYear()} — Advancing Clinical Excellence & Advocacy</p>
         </div>
       </footer>
     </div>
@@ -545,4 +546,3 @@ const App = () => {
 };
 
 export default App;
-
