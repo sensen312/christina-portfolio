@@ -255,8 +255,8 @@ const App = () => {
             </a>
             
             <a 
-              href="/Christina_Rozvodovskiy_Resume.pdf" 
-              download="Christina_Rozvodovskiy_Resume.pdf"
+              href="/C._Rozvodovskiy_Resume.pdf" 
+              download="C._Rozvodovskiy_Resume.pdf                                     "
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full sm:w-auto group px-8 py-4 glass-panel text-[#C5A059] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-[#002B5B] hover:border-[#C5A059] active:scale-[0.98] transition-all duration-500 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.2)] ${focusRingDarkBg}`}
@@ -290,8 +290,12 @@ const App = () => {
             
             <div className="relative group mx-auto w-full max-w-sm md:max-w-md lg:max-w-full animate-float">
               <div className="aspect-[4/5] bg-white flex items-center justify-center text-[#002B5B] serif text-2xl border border-[#002B5B]/10 shadow-2xl overflow-hidden relative z-10 transition-transform duration-700 group-hover:scale-[1.02]">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002B5B]/10 to-transparent"></div>
-                <span className="relative z-10 tracking-[0.3em] font-medium opacity-30 text-sm">PORTRAIT</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002B5B]/10 to-transparent z-10 pointer-events-none"></div>
+                <img 
+                  src="/headshot.PNG" 
+                  alt="Christina Rozvodovskiy Portrait" 
+                  className="w-full h-full object-cover relative z-0"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border-2 border-[#C5A059]/60 z-0 transition-all duration-700 group-hover:translate-x-4 group-hover:translate-y-4 group-hover:border-[#C5A059]"></div>
             </div>
