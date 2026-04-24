@@ -256,7 +256,7 @@ const App = () => {
             
             <a 
               href="/C._Rozvodovskiy_Resume.pdf" 
-              download="C._Rozvodovskiy_Resume.pdf                                     "
+              download="C._Rozvodovskiy_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full sm:w-auto group px-8 py-4 glass-panel text-[#C5A059] border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-[#002B5B] hover:border-[#C5A059] active:scale-[0.98] transition-all duration-500 uppercase tracking-widest text-xs font-bold rounded-sm flex items-center justify-center gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.2)] ${focusRingDarkBg}`}
@@ -288,15 +288,25 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 md:gap-20 items-center">
             
+            {/* ENHANCED HEADSHOT CONTAINER */}
             <div className="relative group mx-auto w-full max-w-sm md:max-w-md lg:max-w-full animate-float">
-              <div className="aspect-[4/5] bg-white flex items-center justify-center text-[#002B5B] serif text-2xl border border-[#002B5B]/10 shadow-2xl overflow-hidden relative z-10 transition-transform duration-700 group-hover:scale-[1.02]">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002B5B]/10 to-transparent z-10 pointer-events-none"></div>
+              <div className="aspect-[4/5] bg-[#E8E8E8] shadow-2xl overflow-hidden relative z-10 transition-transform duration-700 group-hover:scale-[1.02] border border-[#C5A059]/20 rounded-sm">
+                
+                {/* Subtle warm tint overlay to blend the photo into the site's palette - fades on hover */}
+                <div className="absolute inset-0 bg-[#C5A059]/10 mix-blend-color-burn z-10 transition-opacity duration-700 group-hover:opacity-0 pointer-events-none"></div>
+                
+                {/* Bottom dark gradient to anchor the image and provide depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002B5B]/30 via-transparent to-transparent z-10 pointer-events-none"></div>
+                
+                {/* The Headshot Image */}
                 <img 
-                  src="/headshot.PNG" 
+                  src="/professional headshot.PNG" 
                   alt="Christina Rozvodovskiy Portrait" 
-                  className="w-full h-full object-cover relative z-0"
+                  className="w-full h-full object-cover relative z-0 transition-transform duration-1000 group-hover:scale-105"
                 />
               </div>
+              
+              {/* Decorative Gold Border Outline */}
               <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-full h-full border-2 border-[#C5A059]/60 z-0 transition-all duration-700 group-hover:translate-x-4 group-hover:translate-y-4 group-hover:border-[#C5A059]"></div>
             </div>
 
