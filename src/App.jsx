@@ -13,7 +13,7 @@ import {
   ShieldAlert,
   GraduationCap
 } from 'lucide-react';
-import headshotImage from './professional headshot.PNG';
+import headshotImage from './headshot.PNG';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
