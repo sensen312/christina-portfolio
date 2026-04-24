@@ -13,7 +13,6 @@ import {
   ShieldAlert,
   GraduationCap
 } from 'lucide-react';
-import headshotImage from './headshot.PNG';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -314,7 +313,7 @@ const App = () => {
                 
                 {/* The Headshot Image */}
                 <img 
-                  src={headshotImage} 
+                  src="/headshot.PNG" 
                   alt="Christina Rozvodovskiy Portrait" 
                   className="w-full h-full object-cover relative z-0 transition-transform duration-1000 group-hover:scale-105"
                 />
