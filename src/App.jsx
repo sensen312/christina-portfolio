@@ -13,6 +13,7 @@ import {
   ShieldAlert,
   GraduationCap
 } from 'lucide-react';
+import headshotImage from './professional headshot.PNG';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,6 +22,19 @@ const App = () => {
 
   // Handle scroll effect for navbar & trigger mount animations
   useEffect(() => {
+    // 1. Overwrite the default Vite/React Title
+    document.title = "Christina's Portfolio";
+
+    // 2. Overwrite the default Vite/React Favicon with a professional "CR" logo
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    // Injects a custom SVG icon: Dark blue rounded square with gold serif "CR" text
+    link.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23001229" rx="20"/><text x="50%" y="50%" font-size="48" font-family="serif" font-weight="bold" fill="%23C5A059" dominant-baseline="central" text-anchor="middle">CR</text></svg>';
+
     setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -300,7 +314,7 @@ const App = () => {
                 
                 {/* The Headshot Image */}
                 <img 
-                  src="/headshot.PNG" 
+                  src={headshotImage} 
                   alt="Christina Rozvodovskiy Portrait" 
                   className="w-full h-full object-cover relative z-0 transition-transform duration-1000 group-hover:scale-105"
                 />
@@ -549,7 +563,7 @@ const App = () => {
 
       {/* Footer */}
       <footer className="py-10 md:py-12 bg-[#001229] text-white/60 text-center border-t border-[#C5A059]/10">
-        <div className="max-w-7xl mx-auto px-6 z">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="serif text-[#C5A059] text-2xl md:text-3xl font-bold mb-4 opacity-80 tracking-widest">CR</div>
           <p className="text-xs uppercase tracking-widest mb-3 font-medium">Christina Rozvodovskiy</p>
           <p className="text-[11px] tracking-widest font-light text-white/50">© {new Date().getFullYear()} — Advancing Clinical Excellence & Advocacy</p>
