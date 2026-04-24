@@ -300,7 +300,7 @@ const App = () => {
                 
                 {/* The Headshot Image */}
                 <img 
-                  src="/professional headshot.PNG" 
+                  src="/headshot.PNG" 
                   alt="Christina Rozvodovskiy Portrait" 
                   className="w-full h-full object-cover relative z-0 transition-transform duration-1000 group-hover:scale-105"
                 />
@@ -549,7 +549,7 @@ const App = () => {
 
       {/* Footer */}
       <footer className="py-10 md:py-12 bg-[#001229] text-white/60 text-center border-t border-[#C5A059]/10">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 z">
           <div className="serif text-[#C5A059] text-2xl md:text-3xl font-bold mb-4 opacity-80 tracking-widest">CR</div>
           <p className="text-xs uppercase tracking-widest mb-3 font-medium">Christina Rozvodovskiy</p>
           <p className="text-[11px] tracking-widest font-light text-white/50">© {new Date().getFullYear()} — Advancing Clinical Excellence & Advocacy</p>
